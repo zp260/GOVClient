@@ -85,9 +85,13 @@
         _SidXZ.text = [NSString stringWithFormat:@"资金性质：%@",[_PackageDic objectForKey:@"bid_qtzj"]];
         _SidDaiBiao.text = [NSString stringWithFormat:@"采购代表：%@",[_PackageDic objectForKey:@"cgdb"]];
         _SidTel.text = [NSString stringWithFormat:@"联系电话：%@",[_PackageDic objectForKey:@"dwlxdh"]];
+        _V2Starttime.text =[NSString stringWithFormat:@"开标时间：%@",[_PackageDic valueForKey:@"kbdatatime"]];
+        _V2Place.text = [NSString stringWithFormat:@"开标地点：%@",[_PackageDic valueForKey:@"kbplace"]];
+       
         
         _PidStartTime.text =[NSString stringWithFormat:@"开标时间：%@",[_PackageDic valueForKey:@"kbdatatime"]];
         _PidPlace.text = [NSString stringWithFormat:@"开标地点：%@",[_PackageDic valueForKey:@"kbplace"]];
+        
     }
     
     
@@ -137,7 +141,7 @@
     _tel.text = @"电话";
     
     UILabel *_pro = [[UILabel alloc]initWithFrame:CGRectMake(_tel.right, 0, H_width, 21)];
-    _pro.text =@"签到状态";
+    _pro.text =@"专业";
     
 
     
@@ -248,7 +252,7 @@
 //    unit.numberOfLines =2;
     NSLog(@"%@",[_ZhuanjiaList objectAtIndex:row]);
     _name.text = [[_ZhuanjiaList objectAtIndex:row] objectForKey:@"name"];
-    pro.text = [[_ZhuanjiaList objectAtIndex:row] objectForKey:@"state"];
+    pro.text = [[_ZhuanjiaList objectAtIndex:row] objectForKey:@"zy"];
     tel.text = [[_ZhuanjiaList objectAtIndex:row] objectForKey:@"sjhm"];
 
 //    unit.text = [_UnitArray objectAtIndex:row];

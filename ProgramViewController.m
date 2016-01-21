@@ -17,6 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self initTableList];
+    
+    [self makeConfigMenu];
+
+}
+-(void)initTableList
+{
+    
     data = [[indexdata alloc]init];
     [data readNSUserDefaults];
     
@@ -24,10 +32,8 @@
     _HistoryPara = [[NSMutableDictionary alloc]initWithObjectsAndKeys:data.DefaultEid,@"uid",data.DefaultCst,@"cst", nil];
     NSString *urlstr = [NSString stringWithFormat:@"%@%@",Url_RootAdress,Url_HistoryUrl];
     [self getOLData:urlstr parameter:_HistoryPara];
-    
-    [self makeConfigMenu];
-
 }
+
 -(void)getOLData:(NSString *)withUrl parameter:(NSDictionary *)dic
 {
     get = [[NetGetController alloc]init];
@@ -148,7 +154,7 @@
 //加载数据的方法:
 - (IBAction)loadMoreData:(id)sender
 {
-    if (_currentPage.intValue >=1)
+    if (_currentPage.intValue >=1 && _currentPage.intValue < _totalPage.intValue)
     {
         NSString *nextPage = [NSString stringWithFormat:@"%d", _currentPage.intValue +1];
         [_HistoryPara setObject:nextPage forKey:@"page"];
@@ -156,7 +162,12 @@
         NSString *urlstr = [NSString stringWithFormat:@"%@%@",Url_RootAdress,Url_HistoryUrl];
         [get GetUrl:urlstr target:self selector:@selector(moreDataBack:) parameters:_HistoryPara];
     }
-    
+    else
+    {
+        UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"提示" message:@"已经没有更多数据可以加载了。。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+
 }
 
 
@@ -175,6 +186,26 @@
         
     }
     [self._TableView reloadData];
+    
+}
+
+#pragma mark- searchbar delegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [_HistoryPara setObject:_searchBar.text forKey:@"pname"];
+    [_HistoryPara setObject:@"1" forKey:@"page"];
+    NSString *urlstr = [NSString stringWithFormat:@"%@%@",Url_RootAdress,Url_HistoryUrl];
+    [self getOLData:urlstr parameter:_HistoryPara];
+    [_searchBar setShowsCancelButton:YES animated:YES];
+}
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self initTableList];
+    _searchBar.text = nil;
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+}
+- (void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar
+{
     
 }
 /*

@@ -17,14 +17,18 @@
     NSNumber *_totalPage;
     NetGetController *get;
     indexdata *data;
+    NSMutableDictionary *_TodayPara;
+    
     NSMutableArray *more;
+    
     IBOutlet UITableViewCell *_loadMoreCell;
+    IBOutlet UISearchBar *_SearchBar;
 }
 @property (strong,nonatomic) NSArray *_MenuArray;
 @property (strong, nonatomic) IBOutlet UITableView *_TableView;
 
 @property (strong,nonatomic) NSMutableArray *_programArrays;
-@property (strong, nonatomic) IBOutlet UISearchBar *_SearchBar;
+
 
 #define Url_TodayUrl @"/eph/sm/initkbproGrid"
 @end

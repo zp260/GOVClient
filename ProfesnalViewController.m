@@ -17,14 +17,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self initTableList];
+}
+-(void)initTableList
+{
     data = [[indexdata alloc]init];
     [data readNSUserDefaults];
     
     self._programArrays = [[NSMutableArray alloc]init];
-    NSDictionary *para = [[NSDictionary alloc]initWithObjectsAndKeys:data.DefaultEid,@"uid",data.DefaultCst,@"cst", nil];
+    _ProfesPara = [[NSMutableDictionary alloc]initWithObjectsAndKeys:data.DefaultEid,@"uid",data.DefaultCst,@"cst", nil];
     NSString *urlstr = [NSString stringWithFormat:@"%@%@",Url_RootAdress,Url_ProfesnalList];
-    [self getOLData:urlstr parameter:para];
-    
+    [self getOLData:urlstr parameter:_ProfesPara];
+
 }
 
 -(void)getOLData:(NSString *)withUrl parameter:(NSDictionary *)dic
@@ -144,14 +148,18 @@
 //加载数据的方法:
 - (IBAction)loadMoreData:(id)sender
 {
-    if (_currentPage.intValue >=1)
+    if (_currentPage.intValue >=1 && _currentPage.intValue < _totalPage.intValue)
     {
         NSString *nextPage = [NSString stringWithFormat:@"%d", _currentPage.intValue +1];
-        NSDictionary *para = [[NSDictionary alloc]initWithObjectsAndKeys:data.DefaultEid,@"uid",data.DefaultCst,@"cst",nextPage,@"page" ,nil];
+        [_ProfesPara setObject:nextPage forKey:@"page"];
         NSString *urlstr = [NSString stringWithFormat:@"%@%@",Url_RootAdress,Url_ProfesnalList];
-        [get GetUrl:urlstr target:self selector:@selector(moreDataBack:) parameters:para];
+        [get GetUrl:urlstr target:self selector:@selector(moreDataBack:) parameters:_ProfesPara];
     }
-
+    else
+    {
+        UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"提示" message:@"已经没有更多数据可以加载了。。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
     
 }
 
@@ -161,17 +169,37 @@
 
 
 
--(void) appendTableWith:(NSMutableArray *)data
+-(void) appendTableWith:(NSMutableArray *)APdata
 
 {
-    for (int i=0;i<[data count];i++)
+    for (int i=0;i<[APdata count];i++)
     {
-        NSLog(@"%@",[data objectAtIndex:i]);
-        [self._programArrays addObject:[data objectAtIndex:i]];
+        NSLog(@"%@",[APdata objectAtIndex:i]);
+        [self._programArrays addObject:[APdata objectAtIndex:i]];
         
     }
     NSLog(@"count %lu %@",(unsigned long)self._programArrays.count,self._programArrays);
     [self._TableView reloadData];
+    
+}
+
+#pragma mark- searchbar delegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [_ProfesPara setObject:_searchBar.text forKey:@"expname"];
+    [_ProfesPara setObject:@"1" forKey:@"page"];
+    NSString *urlstr = [NSString stringWithFormat:@"%@%@",Url_RootAdress,Url_ProfesnalList];
+    [self getOLData:urlstr parameter:_ProfesPara];
+    [_searchBar setShowsCancelButton:YES animated:YES];
+}
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self initTableList];
+    _searchBar.text = nil;
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+}
+- (void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar
+{
     
 }
 

@@ -16,14 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    data = [[indexdata alloc]init];
-    [data readNSUserDefaults];
     
-    self._programArrays = [[NSMutableArray alloc]init];
-    NSDictionary *para = [[NSDictionary alloc]initWithObjectsAndKeys:data.DefaultEid,@"uid",data.DefaultCst,@"cst", nil];
-    NSString *urlstr = [NSString stringWithFormat:@"%@%@",Url_RootAdress,Url_TodayUrl];
-    [self getOLData:urlstr parameter:para];
-    self._SearchBar.delegate =self;
+    [self initTableList];
+    _SearchBar.delegate =self;
 
     self.title = @"今日评审";
     // Do any additional setup after loading the view from its nib.
@@ -34,6 +29,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)initTableList
+{
+    data = [[indexdata alloc]init];
+    [data readNSUserDefaults];
+    
+    self._programArrays = [[NSMutableArray alloc]init];
+    _TodayPara = [[NSMutableDictionary alloc]initWithObjectsAndKeys:data.DefaultEid,@"uid",data.DefaultCst,@"cst", nil];
+    NSString *urlstr = [NSString stringWithFormat:@"%@%@",Url_RootAdress,Url_TodayUrl];
+    [self getOLData:urlstr parameter:_TodayPara];
 }
 #pragma mark - 网络数据接口处理
 -(void)getOLData:(NSString *)withUrl parameter:(NSDictionary *)dic
@@ -152,14 +157,19 @@
 //加载数据的方法:
 - (IBAction)loadMoreData:(id)sender
 {
-    if (_currentPage.intValue >=1)
+    if (_currentPage.intValue >=1 && _currentPage.intValue < _totalPage.intValue)
     {
         NSString *nextPage = [NSString stringWithFormat:@"%d", _currentPage.intValue +1];
-        NSDictionary *para = [[NSDictionary alloc]initWithObjectsAndKeys:data.DefaultEid,@"uid",data.DefaultCst,@"cst",nextPage,@"page",nil];
+        [_TodayPara setObject:nextPage forKey:@"page"];
         NSString *urlstr = [NSString stringWithFormat:@"%@%@",Url_RootAdress,Url_TodayUrl];
-        [get GetUrl:urlstr target:self selector:@selector(moreDataBack:) parameters:para];
+        [get GetUrl:urlstr target:self selector:@selector(moreDataBack:) parameters:_TodayPara];
     }
-    
+    else
+    {
+        UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"提示" message:@"已经没有更多数据可以加载了。。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+
 
     
 }
@@ -183,11 +193,27 @@
     [self._TableView reloadData];
     
 }
-#pragma mark-SearchBar delegate
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+
+#pragma mark- searchbar delegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSLog(@"开始搜索");
+    [_TodayPara setObject:_SearchBar.text forKey:@"pname"];
+    [_TodayPara setObject:@"1" forKey:@"page"];
+    NSString *urlstr = [NSString stringWithFormat:@"%@%@",Url_RootAdress,Url_TodayUrl];
+    [self getOLData:urlstr parameter:_TodayPara];
+    [_SearchBar setShowsCancelButton:YES animated:YES];
 }
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self initTableList];
+    _SearchBar.text = nil;
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+}
+- (void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar
+{
+    
+}
+
 
 /*
 #pragma mark - Navigation

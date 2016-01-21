@@ -143,13 +143,46 @@
         _phone.text = [NSString stringWithFormat:@"%@%@",_phone.text,[self._BaseInfo valueForKey:@"sjhm"]];
         
         
-        _TowYearPR.text = [NSString stringWithFormat:@"%@%@",_TowYearPR.text,[self._BaseInfo valueForKey:@"jlnccjpbdzbxm"]];
-        _KYResoult.text = [NSString stringWithFormat:@"%@%@",_KYResoult.text,[self._BaseInfo valueForKey:@"zykycghgzyj"]];
-        _mainJl.text = [NSString stringWithFormat:@"%@%@",_mainJl.text,[self._BaseInfo valueForKey:@"zygzjl"]];
+        _TowYearPR.text = [NSString stringWithFormat:@"%@%@",_TowYearPR.text,[self convertNull:[self._BaseInfo valueForKey:@"jlnccjpbdzbxm"]]];
+        _KYResoult.text = [NSString stringWithFormat:@"%@%@",_KYResoult.text,[self convertNull:[self._BaseInfo valueForKey:@"zykycghgzyj"]]];
+        _mainJl.text = [NSString stringWithFormat:@"%@%@",_mainJl.text,[self convertNull:[self._BaseInfo valueForKey:@"zygzjl"]]];
+        _JoinWhere.text = [NSString stringWithFormat:@"%@%@",_JoinWhere.text,[self convertNull:[self._BaseInfo valueForKey:@"jlnccjpbdzbxm"]]];
+        _JoinWhosGuide.text = [NSString stringWithFormat:@"%@%@",_JoinWhosGuide.text,[self convertNull:[self._BaseInfo valueForKey:@"drhjqyjszdymygw"]]];
         
     }
 }
-
+-(NSString*)convertNull:(id)object{
+    
+    // 转换空串
+    
+    if ([object isEqual:[NSNull null]]) {
+        return @" ";
+    }
+    else if ([object isKindOfClass:[NSNull class]])
+    {
+        return @" ";
+    }
+    else if (object==nil){
+        return @"无";
+    }
+    return object;
+    
+}
+-(BOOL)isNull:(id)object
+{
+    // 判断是否为空串
+    if ([object isEqual:[NSNull null]]) {
+        return NO;
+    }
+    else if ([object isKindOfClass:[NSNull class]])
+    {
+        return NO;
+    }
+    else if (object==nil){
+        return NO;
+    }
+    return YES;
+}
 -(void)makeHeaderView
 {
     

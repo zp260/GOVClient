@@ -12,7 +12,7 @@
 #import "NetGetController.h"
 #import "ProgramPacketViewController.h"
 
-@interface ProgramViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface ProgramViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 {
     indexdata *data;
     int _page;
@@ -22,6 +22,7 @@
     NSMutableArray *more;
     IBOutlet UITableViewCell *_loadMoreCell;
     NSMutableDictionary *_HistoryPara;
+    IBOutlet UISearchBar *_searchBar;
 
 }
 

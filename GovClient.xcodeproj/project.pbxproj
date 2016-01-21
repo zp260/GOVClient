@@ -17,7 +17,6 @@
 		36B876B61BB784750024990C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B876B51BB784750024990C /* ViewController.m */; };
 		36B876B91BB784750024990C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B876B71BB784750024990C /* Main.storyboard */; };
 		36B876BB1BB784750024990C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36B876BA1BB784750024990C /* Assets.xcassets */; };
-		36B876BE1BB784750024990C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B876BC1BB784750024990C /* LaunchScreen.storyboard */; };
 		36B876C91BB786BE0024990C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B876C71BB786BE0024990C /* MainViewController.m */; };
 		36B876CA1BB786BE0024990C /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B876C81BB786BE0024990C /* MainViewController.xib */; };
 		36B876CE1BB787270024990C /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B876CC1BB787270024990C /* TabBarViewController.m */; };
@@ -34,6 +33,7 @@
 		36FD65E41BFC648800B87A4E /* indexdata.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FD65DF1BFC648800B87A4E /* indexdata.m */; };
 		36FD65E51BFC648800B87A4E /* ProgramPacketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FD65E21BFC648800B87A4E /* ProgramPacketViewController.m */; };
 		36FD65E61BFC648800B87A4E /* ProgramPacketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FD65E31BFC648800B87A4E /* ProgramPacketViewController.xib */; };
+		4AE3D3FE1C16E5C800C67574 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE3D3FD1C16E5C800C67574 /* Launch Screen.storyboard */; };
 		BE69E43C9EEBEB06776003BF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2B3DC5244B83DBDC7BCBEA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +55,6 @@
 		36B876B51BB784750024990C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		36B876B81BB784750024990C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36B876BA1BB784750024990C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		36B876BD1BB784750024990C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36B876BF1BB784750024990C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36B876C51BB7862E0024990C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		36B876C61BB786BE0024990C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -83,6 +82,7 @@
 		36FD65E11BFC648800B87A4E /* ProgramPacketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramPacketViewController.h; sourceTree = "<group>"; };
 		36FD65E21BFC648800B87A4E /* ProgramPacketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramPacketViewController.m; sourceTree = "<group>"; };
 		36FD65E31BFC648800B87A4E /* ProgramPacketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgramPacketViewController.xib; sourceTree = "<group>"; };
+		4AE3D3FD1C16E5C800C67574 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		5495D4535C66594EE3F9B2E2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8B2D9A644532B7AF1E22474B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +150,7 @@
 		36B876A21BB784750024990C = {
 			isa = PBXGroup;
 			children = (
+				4AE3D3FD1C16E5C800C67574 /* Launch Screen.storyboard */,
 				36B876C51BB7862E0024990C /* PrefixHeader.pch */,
 				36FD65DE1BFC643400B87A4E /* Modle */,
 				36FD65DB1BFC54E400B87A4E /* NetGetController.h */,
@@ -187,7 +188,6 @@
 				36B876B51BB784750024990C /* ViewController.m */,
 				36B876B71BB784750024990C /* Main.storyboard */,
 				36B876BA1BB784750024990C /* Assets.xcassets */,
-				36B876BC1BB784750024990C /* LaunchScreen.storyboard */,
 				36B876BF1BB784750024990C /* Info.plist */,
 				36B876AE1BB784750024990C /* Supporting Files */,
 			);
@@ -307,7 +307,7 @@
 				36FD65E61BFC648800B87A4E /* ProgramPacketViewController.xib in Resources */,
 				36B876E41BB78F9E0024990C /* ProgramViewController.xib in Resources */,
 				36B876E91BB78FB30024990C /* CountViewController.xib in Resources */,
-				36B876BE1BB784750024990C /* LaunchScreen.storyboard in Resources */,
+				4AE3D3FE1C16E5C800C67574 /* Launch Screen.storyboard in Resources */,
 				36B876BB1BB784750024990C /* Assets.xcassets in Resources */,
 				36B876B91BB784750024990C /* Main.storyboard in Resources */,
 				36B876CA1BB786BE0024990C /* MainViewController.xib in Resources */,
@@ -383,14 +383,6 @@
 				36B876B81BB784750024990C /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		36B876BC1BB784750024990C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				36B876BD1BB784750024990C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

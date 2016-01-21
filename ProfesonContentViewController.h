@@ -33,6 +33,8 @@
     IBOutlet UILabel *_mainJl; //主要工作简历
     IBOutlet UILabel *_TowYearPR; //进两年的参加的招标项目
     IBOutlet UILabel *_KYResoult; //主要科研成果与工作业绩
+    IBOutlet UILabel *_JoinWhere; //参加何种协会、担任何种职务
+    IBOutlet UILabel *_JoinWhosGuide;//担任何家企业技术指导、名誉顾问
     
     
     //评审相关

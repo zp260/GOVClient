@@ -10,15 +10,18 @@
 #import "ProfesonContentViewController.h"
 #import "indexdata.h"
 
-@interface ProfesnalViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface ProfesnalViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
     indexdata *data;
     int _page;
     NSNumber *_currentPage;
     NSNumber *_totalPage;
+    NSMutableDictionary *_ProfesPara;
+    
     NetGetController *get;
     NSMutableArray *more;
     IBOutlet UITableViewCell *_loadMoreCell;
+    IBOutlet UISearchBar *_searchBar;
     
     
 }

@@ -45,6 +45,8 @@
     IBOutlet UILabel *_PidStartTime;//开始时间
     IBOutlet UILabel *_PidPlace; //开标地点
     
+    IBOutlet UILabel *_V2Starttime;
+    IBOutlet UILabel *_V2Place;
     
     
     
