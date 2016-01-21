@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment version="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
+            <connections>
+                <outlet property="_LoginBt" destination="F3G-47-C9H" id="8KD-yG-ZU3"/>
+                <outlet property="_PassTextFiled" destination="dvL-SN-hyg" id="OeL-IV-d2t"/>
+                <outlet property="_TopWeatherImgView" destination="BIu-NU-Rek" id="Xzq-R5-sgH"/>
+                <outlet property="_UserTextFiled" destination="nBG-i2-5tw" id="hPT-u8-qfv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="9yf-D0-Jkz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weather.jpg" highlightedImage="weather.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="BIu-NU-Rek">
+                    <rect key="frame" x="0.0" y="64" width="600" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="XL8-3D-pXD"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5r-KA-Ol4">
+                    <rect key="frame" x="39" y="329" width="34" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3G-47-C9H">
+                    <rect key="frame" x="39" y="495" width="522" height="57"/>
+                    <color key="backgroundColor" red="0.038893469243092782" green="0.53851488892495913" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="57" id="913-r9-p6d"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="登陆"/>
+                    <connections>
+                        <action selector="_LoginClick:" destination="-1" eventType="touchUpInside" id="yGC-aV-9Ou"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nBG-i2-5tw">
+                    <rect key="frame" x="81" y="326" width="480" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="qXW-gD-RhN"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dvL-SN-hyg">
+                    <rect key="frame" x="81" y="394" width="480" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="0AV-7Q-mWn"/>
+                    </connections>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3a-Y3-TQ1">
+                    <rect key="frame" x="39" y="397" width="34" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="BIu-NU-Rek" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4sm-AF-1XY"/>
+                <constraint firstItem="dvL-SN-hyg" firstAttribute="leading" secondItem="nBG-i2-5tw" secondAttribute="leading" id="8aK-M7-hlv"/>
+                <constraint firstItem="nBG-i2-5tw" firstAttribute="leading" secondItem="x5r-KA-Ol4" secondAttribute="trailing" constant="8" symbolic="YES" id="AgA-Mj-eBj"/>
+                <constraint firstItem="x5r-KA-Ol4" firstAttribute="baseline" secondItem="nBG-i2-5tw" secondAttribute="baseline" id="Dur-Ot-ywe"/>
+                <constraint firstItem="x5r-KA-Ol4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="39" id="GGb-IS-jHr"/>
+                <constraint firstItem="S3a-Y3-TQ1" firstAttribute="leading" secondItem="x5r-KA-Ol4" secondAttribute="leading" id="LNc-QD-y0H"/>
+                <constraint firstItem="dvL-SN-hyg" firstAttribute="top" secondItem="nBG-i2-5tw" secondAttribute="bottom" constant="38" id="Lxp-S6-tyQ"/>
+                <constraint firstItem="nBG-i2-5tw" firstAttribute="trailing" secondItem="dvL-SN-hyg" secondAttribute="trailing" id="Xfr-yx-bPr"/>
+                <constraint firstItem="BIu-NU-Rek" firstAttribute="centerX" secondItem="F3G-47-C9H" secondAttribute="centerX" id="Xp4-b7-UWy"/>
+                <constraint firstItem="F3G-47-C9H" firstAttribute="top" secondItem="dvL-SN-hyg" secondAttribute="bottom" constant="71" id="fPr-rz-08t"/>
+                <constraint firstItem="F3G-47-C9H" firstAttribute="trailing" secondItem="dvL-SN-hyg" secondAttribute="trailing" id="lAe-fP-WCC"/>
+                <constraint firstItem="S3a-Y3-TQ1" firstAttribute="baseline" secondItem="dvL-SN-hyg" secondAttribute="baseline" id="oWi-Tj-Sf9"/>
+                <constraint firstAttribute="bottom" secondItem="F3G-47-C9H" secondAttribute="bottom" constant="48" id="riu-we-keY"/>
+                <constraint firstItem="BIu-NU-Rek" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="tpK-lm-Cei"/>
+                <constraint firstItem="F3G-47-C9H" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wXO-xe-sb9"/>
+                <constraint firstItem="F3G-47-C9H" firstAttribute="leading" secondItem="S3a-Y3-TQ1" secondAttribute="leading" id="xOG-ux-4Em"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="weather.jpg" width="535" height="248"/>
+    </resources>
+</document>
