@@ -219,7 +219,7 @@
             </constraints>
             <point key="canvasLocation" x="565" y="1038"/>
         </view>
-        <view tag="3" contentMode="scaleToFill" id="faj-Ta-Ja0">
+        <view hidden="YES" tag="3" contentMode="scaleToFill" id="faj-Ta-Ja0">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>

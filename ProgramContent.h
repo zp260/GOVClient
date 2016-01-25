@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "indexdata.h"
 #import "NetGetController.h"
+#import "checkNil.h"
 @interface ProgramContent : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     indexdata *data;
     NetGetController *get;
     NSDictionary *_PackageDic;
     NSArray *_ZhuanjiaList;
+    checkNil *NstringCheckNil;
+    
     //标包部分
     IBOutlet UILabel *_SidXZ;//资金性质
     IBOutlet UILabel *_SidName;//标段名称

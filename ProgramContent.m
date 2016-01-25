@@ -16,11 +16,15 @@
 @synthesize _ProgramData = _ProgramData;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NstringCheckNil = [[checkNil alloc]init]; //初始化空字符窜处理
+    
     [self configPorgramView]; //适配项目信息内容
     [self getData];
     NSLog(@"%@",self._Segment);
-        self.title = @"大同市财政局评审专家管理系统";
+        self.title = @"标包内容";
     _s_height =kDeviceHeight - KNavgationBarHeight+self._Segment.height-KTabarHeight;
+    
     // Do any additional setup after loading the view from its nib.
     self._SgView1.frame = CGRectMake(0, self._Segment.bottom, kDeviceWidth, _s_height);
     self._SgView2.frame = self._SgView1.frame;
@@ -28,6 +32,8 @@
     [self.view addSubview:self._SgView1];
     [self.view addSubview:self._SgView2];
     [self.view addSubview:self._SgView3];
+    
+
     
 
 }
@@ -81,7 +87,7 @@
         
         _SidName.text = [_PackageDic objectForKey:@"sectionname"];
         _SidSn.text = [NSString stringWithFormat:@"标包项目编号：%@",[_PackageDic objectForKey:@"sectionnum"]];
-        _SidMoney.text =[NSString stringWithFormat:@"预算金额：%@",[_PackageDic objectForKey:@"budgetfee"]];
+        _SidMoney.text =[NSString stringWithFormat:@"预算金额：%@", [_PackageDic objectForKey:@"budgetfee"]];
         _SidXZ.text = [NSString stringWithFormat:@"资金性质：%@",[_PackageDic objectForKey:@"bid_qtzj"]];
         _SidDaiBiao.text = [NSString stringWithFormat:@"采购代表：%@",[_PackageDic objectForKey:@"cgdb"]];
         _SidTel.text = [NSString stringWithFormat:@"联系电话：%@",[_PackageDic objectForKey:@"dwlxdh"]];
@@ -99,6 +105,7 @@
 #pragma mark-- 适配项目信息
 -(void)configPorgramView
 {
+    
     if (_ProgramData)
     {
         NSLog(@"项目包:%@",_ProgramData);
@@ -112,7 +119,8 @@
         _PidWillPayMoney.text = [NSString stringWithFormat:@"财政拨款：%@",[_ProgramData valueForKey:@"czbk"]];
         _PidHjMoney.text = [NSString stringWithFormat:@"合计        ：%@",[_ProgramData valueForKey:@"hj"]];
         _PidQT.text = [NSString stringWithFormat:@"其他        ：%@",[_ProgramData valueForKey:@"qt"]];
-        _PidRemark.text = [NSString stringWithFormat:@"备注        ：%@",[_ProgramData valueForKey:@"remark"]];
+        NSLog(@"%@",[_ProgramData valueForKey:@"remark"]);
+        _PidRemark.text = [NSString stringWithFormat:@"备注        ：%@",[NstringCheckNil convertNull:[_ProgramData valueForKey:@"remark"]]];
         
         
         
