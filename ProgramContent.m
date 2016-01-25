@@ -88,9 +88,12 @@
         _SidName.text = [_PackageDic objectForKey:@"sectionname"];
         _SidSn.text = [NSString stringWithFormat:@"标包项目编号：%@",[_PackageDic objectForKey:@"sectionnum"]];
         _SidMoney.text =[NSString stringWithFormat:@"预算金额：%@", [_PackageDic objectForKey:@"budgetfee"]];
-        _SidXZ.text = [NSString stringWithFormat:@"资金性质：%@",[_PackageDic objectForKey:@"bid_qtzj"]];
-        _SidDaiBiao.text = [NSString stringWithFormat:@"采购代表：%@",[_PackageDic objectForKey:@"cgdb"]];
-        _SidTel.text = [NSString stringWithFormat:@"联系电话：%@",[_PackageDic objectForKey:@"dwlxdh"]];
+        _SidXZ.text = [NSString stringWithFormat:@"资金性质：%@",
+                       [NstringCheckNil convertNull:[_PackageDic objectForKey:@"bid_qtzj"]]];
+        _SidDaiBiao.text = [NSString stringWithFormat:@"采购代表：%@",
+                            [NstringCheckNil convertNull:[_PackageDic objectForKey:@"cgdb"]]];
+        _SidTel.text = [NSString stringWithFormat:@"联系电话：%@",
+                        [NstringCheckNil convertNull:[_PackageDic objectForKey:@"dwlxdh"]]];
         _V2Starttime.text =[NSString stringWithFormat:@"开标时间：%@",[_PackageDic valueForKey:@"kbdatatime"]];
         _V2Place.text = [NSString stringWithFormat:@"开标地点：%@",[_PackageDic valueForKey:@"kbplace"]];
        
@@ -118,8 +121,8 @@
         _PidDlORG.text = [NSString stringWithFormat:@"代理机构：%@",[_ProgramData valueForKey:@"agency"]];
         _PidWillPayMoney.text = [NSString stringWithFormat:@"财政拨款：%@",[_ProgramData valueForKey:@"czbk"]];
         _PidHjMoney.text = [NSString stringWithFormat:@"合计        ：%@",[_ProgramData valueForKey:@"hj"]];
-        _PidQT.text = [NSString stringWithFormat:@"其他        ：%@",[_ProgramData valueForKey:@"qt"]];
-        NSLog(@"%@",[_ProgramData valueForKey:@"remark"]);
+        _PidQT.text = [NSString stringWithFormat:@"其他        ：%@",[NstringCheckNil convertNull:[_ProgramData valueForKey:@"qt"]]];
+        
         _PidRemark.text = [NSString stringWithFormat:@"备注        ：%@",[NstringCheckNil convertNull:[_ProgramData valueForKey:@"remark"]]];
         
         
