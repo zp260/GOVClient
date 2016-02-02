@@ -152,7 +152,7 @@
     _tel.text = @"电话";
     
     UILabel *_pro = [[UILabel alloc]initWithFrame:CGRectMake(_tel.right, 0, H_width, 21)];
-    _pro.text =@"专业";
+    _pro.text =@"签到时间";
     
 
     
@@ -263,7 +263,16 @@
 //    unit.numberOfLines =2;
     NSLog(@"%@",[_ZhuanjiaList objectAtIndex:row]);
     _name.text = [[_ZhuanjiaList objectAtIndex:row] objectForKey:@"name"];
-    pro.text = [[_ZhuanjiaList objectAtIndex:row] objectForKey:@"zy"];
+    NSString *qdtime = [NstringCheckNil convertNull:[[_ZhuanjiaList objectAtIndex:row] objectForKey:@"qdtime"]];
+    if ([qdtime  isEqual: @" "])
+    {
+        qdtime = @"未签到";
+    }
+    if ([qdtime isEqual: @"无"])
+    {
+        qdtime = @"未签到";
+    }
+    pro.text = qdtime;
     tel.text = [[_ZhuanjiaList objectAtIndex:row] objectForKey:@"sjhm"];
 
 //    unit.text = [_UnitArray objectAtIndex:row];
