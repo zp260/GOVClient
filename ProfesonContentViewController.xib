@@ -222,11 +222,11 @@
             </constraints>
             <point key="canvasLocation" x="567" y="1022"/>
         </view>
-        <view hidden="YES" tag="3" contentMode="scaleToFill" id="CEk-SX-UZY">
+        <view tag="3" contentMode="scaleToFill" id="CEk-SX-UZY">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主要工作经历：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6W-8Z-VkE">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主要工作经历：" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6W-8Z-VkE">
                     <rect key="frame" x="8" y="38" width="584" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="VLf-QT-MaO"/>

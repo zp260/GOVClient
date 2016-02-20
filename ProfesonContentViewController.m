@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NstringCheckNil = [[checkNil alloc]init]; //初始化空字符窜处理
     data = [[indexdata alloc]init];
     [data readNSUserDefaults];
     
@@ -146,9 +146,36 @@
         _TowYearPR.text = [NSString stringWithFormat:@"%@%@",_TowYearPR.text,[self convertNull:[self._BaseInfo valueForKey:@"jlnccjpbdzbxm"]]];
         _KYResoult.text = [NSString stringWithFormat:@"%@%@",_KYResoult.text,[self convertNull:[self._BaseInfo valueForKey:@"zykycghgzyj"]]];
         _mainJl.text = [NSString stringWithFormat:@"%@%@",_mainJl.text,[self convertNull:[self._BaseInfo valueForKey:@"zygzjl"]]];
+        NSLog(@"frame-->%@",NSStringFromCGRect(_mainJl.frame));
+
+        
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:14]};
+        
+        CGRect rect = [_mainJl.text boundingRectWithSize:CGSizeMake(self.view.width, MAXFLOAT)
+                       
+                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                       
+                                               attributes:attributes
+                       
+                                                  context:nil];
+        NSLog(@"%@",NSStringFromCGRect(rect));
+        _mainJl.frame =rect;
+        [_mainJl setFrame:rect];
+        
         _JoinWhere.text = [NSString stringWithFormat:@"%@%@",_JoinWhere.text,[self convertNull:[self._BaseInfo valueForKey:@"jlnccjpbdzbxm"]]];
         _JoinWhosGuide.text = [NSString stringWithFormat:@"%@%@",_JoinWhosGuide.text,[self convertNull:[self._BaseInfo valueForKey:@"drhjqyjszdymygw"]]];
-        
+        [self covertNilLables];
+    }
+}
+-(void)covertNilLables
+{
+    for (id obj in self._BaseView.subviews)
+    {
+        if([obj isKindOfClass:[UILabel class]] )
+        {
+            UILabel *thisViewLable = (UILabel*)obj;
+            thisViewLable.text = [self convertNull:thisViewLable.text];
+        }
     }
 }
 -(NSString*)convertNull:(id)object{
@@ -164,6 +191,10 @@
     }
     else if (object==nil){
         return @"无";
+    }
+    else if ([object rangeOfString:@"<null>"].location !=NSNotFound)
+    {
+        return [object stringByReplacingOccurrencesOfString:@"<null>" withString:@"无"];
     }
     return object;
     

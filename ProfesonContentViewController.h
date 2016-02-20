@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "indexdata.h"
 #import "NetGetController.h"
+#import "checkNil.h"
 @interface ProfesonContentViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
     indexdata *data;
     NetGetController *get;
+    checkNil *NstringCheckNil;
+    
     /// 专家基本信息
     IBOutlet UILabel *_name;
     IBOutlet UILabel *_sex;
