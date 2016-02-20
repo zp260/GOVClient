@@ -262,7 +262,7 @@
     pro.numberOfLines =2;
 //    unit.numberOfLines =2;
     NSLog(@"%@",[_ZhuanjiaList objectAtIndex:row]);
-    _name.text = [[_ZhuanjiaList objectAtIndex:row] objectForKey:@"name"];
+    _name.text = [[_ZhuanjiaList objectAtIndex:row] objectForKey:@"remark"];
     NSString *qdtime = [NstringCheckNil convertNull:[[_ZhuanjiaList objectAtIndex:row] objectForKey:@"qdtime"]];
     if ([qdtime  isEqual: @" "])
     {
@@ -273,7 +273,7 @@
         qdtime = @"未签到";
     }
     pro.text = qdtime;
-    tel.text = [[_ZhuanjiaList objectAtIndex:row] objectForKey:@"sjhm"];
+    tel.text = [[_ZhuanjiaList objectAtIndex:row] objectForKey:@"tel"];
 
 //    unit.text = [_UnitArray objectAtIndex:row];
     
