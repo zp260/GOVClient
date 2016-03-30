@@ -25,6 +25,11 @@
     else if (object==nil){
         return @"无";
     }
+//    else if ([object rangeOfString:@"<null>"].location !=NSNotFound)
+//    {
+//        return [object stringByReplacingOccurrencesOfString:@"<null>" withString:@" "];
+//    }
+
     return object;
     
 }

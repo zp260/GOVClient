@@ -22,7 +22,7 @@
     [self configPorgramView]; //适配项目信息内容
     [self getData];
     NSLog(@"%@",self._Segment);
-        self.title = @"标包内容";
+    self.title = @"标包内容";
     _s_height =kDeviceHeight - KNavgationBarHeight+self._Segment.height-KTabarHeight;
     
     // Do any additional setup after loading the view from its nib.
@@ -36,6 +36,36 @@
 
     
 
+}
+-(void)viewWillLayoutSubviews
+{
+    //获取数据重新排版
+    float new_Y = 0;
+    for (id obj in self._SgView2.subviews)
+    {
+        
+        if([obj isKindOfClass:[UILabel class]] )
+        {
+            UILabel *thisViewLable = (UILabel*)obj;
+            NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12]};
+            
+            CGRect rect = [thisViewLable.text boundingRectWithSize:CGSizeMake(thisViewLable.width, MAXFLOAT)
+                           
+                                                           options:NSStringDrawingUsesLineFragmentOrigin
+                           
+                                                        attributes:attributes
+                           
+                                                           context:nil];
+            
+            if (new_Y == 0)
+            {
+                new_Y = _SidName.top;
+            }
+            [thisViewLable setFrame:CGRectMake(thisViewLable.left, new_Y, thisViewLable.width, rect.size.height)];
+            new_Y = thisViewLable.bottom+16;
+        }
+        
+    }
 }
 
 #pragma mark - 标包数据获取以及处理
@@ -85,7 +115,7 @@
         
         NSLog(@"标包：%@",_PackageDic);
         
-        _SidName.text = [_PackageDic objectForKey:@"sectionname"];
+        _SidName.text = [NSString stringWithFormat:@"标段名称：%@",[_PackageDic objectForKey:@"sectionname"]];
         _SidSn.text = [NSString stringWithFormat:@"标包项目编号：%@",[_PackageDic objectForKey:@"sectionnum"]];
         _SidMoney.text =[NSString stringWithFormat:@"预算金额：%@", [_PackageDic objectForKey:@"budgetfee"]];
         _SidXZ.text = [NSString stringWithFormat:@"资金性质：%@",
@@ -112,8 +142,8 @@
     if (_ProgramData)
     {
         NSLog(@"项目包:%@",_ProgramData);
-        _PidName.text = [_ProgramData valueForKey:@"projectname"];
-        _PidSN.text = [NSString stringWithFormat:@"项目编号：%@",[_ProgramData valueForKey:@"projectname"]];
+        _PidName.text = [NSString stringWithFormat:@"项目名称：%@", [_ProgramData valueForKey:@"projectname"]];
+        _PidSN.text = [NSString stringWithFormat:@"项目编号：%@",[_ProgramData valueForKey:@"projectnum"]];
         _PidMoney.text = [NSString stringWithFormat:@"专户管理资金：%@",[_ProgramData valueForKey:@"zhglzj"]];
         _PidCg.text = [NSString stringWithFormat:@"采购方式：%@",[_ProgramData valueForKey:@"purpattern"]];
         _PidORG.text = [NSString stringWithFormat:@"组织形式：%@",[_ProgramData valueForKey:@"organizationform"]];
@@ -264,11 +294,7 @@
     NSLog(@"%@",[_ZhuanjiaList objectAtIndex:row]);
     _name.text = [[_ZhuanjiaList objectAtIndex:row] objectForKey:@"remark"];
     NSString *qdtime = [NstringCheckNil convertNull:[[_ZhuanjiaList objectAtIndex:row] objectForKey:@"qdtime"]];
-    if ([qdtime  isEqual: @" "])
-    {
-        qdtime = @"未签到";
-    }
-    if ([qdtime isEqual: @"无"])
+    if ([qdtime  isEqual: @" "] || [qdtime isEqual: @"无"])
     {
         qdtime = @"未签到";
     }

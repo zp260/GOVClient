@@ -10,7 +10,7 @@
 #import "indexdata.h"
 #import "NetGetController.h"
 #import "checkNil.h"
-@interface ProfesonContentViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface ProfesonContentViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
     indexdata *data;
     NetGetController *get;
@@ -54,9 +54,11 @@
 }
 @property (strong, nonatomic) IBOutlet UIView *_BaseView;
 @property (strong, nonatomic) IBOutlet UIView *_ProInfo;
+@property (strong, nonatomic) UIScrollView *_ProScrool;
 @property (strong, nonatomic) IBOutlet UIView *_ProAbout;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *_segment;
 @property (strong, nonatomic) IBOutlet UITableView *_TableView;
+
 
 @property (strong,nonatomic) NSArray *NameArray;// 第一列
 @property (strong,nonatomic) NSArray *TelArray;// 第二列

@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"正在读取数据中。。";
     [self initTableList];
     
     [self makeConfigMenu];
@@ -51,7 +53,7 @@
         
         [self._TableView reloadData];
     }
-    
+    hud.hidden = YES;
     
 }
 -(void)moreDataBack:(NSDictionary *)backData

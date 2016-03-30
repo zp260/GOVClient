@@ -35,6 +35,7 @@
 		36FD65E61BFC648800B87A4E /* ProgramPacketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FD65E31BFC648800B87A4E /* ProgramPacketViewController.xib */; };
 		4AC112771C50DBB00043AC7E /* checkNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC112761C50DBB00043AC7E /* checkNil.m */; };
 		4AE3D3FE1C16E5C800C67574 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE3D3FD1C16E5C800C67574 /* Launch Screen.storyboard */; };
+		4AEA84781CAB64DD00F956BB /* autoLable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEA84771CAB64DD00F956BB /* autoLable.m */; };
 		BE69E43C9EEBEB06776003BF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2B3DC5244B83DBDC7BCBEA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -83,9 +84,11 @@
 		36FD65E11BFC648800B87A4E /* ProgramPacketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramPacketViewController.h; sourceTree = "<group>"; };
 		36FD65E21BFC648800B87A4E /* ProgramPacketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramPacketViewController.m; sourceTree = "<group>"; };
 		36FD65E31BFC648800B87A4E /* ProgramPacketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgramPacketViewController.xib; sourceTree = "<group>"; };
-		4AC112751C50DBB00043AC7E /* checkNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checkNil.h; sourceTree = "<group>"; };
-		4AC112761C50DBB00043AC7E /* checkNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = checkNil.m; sourceTree = "<group>"; };
+		4AC112751C50DBB00043AC7E /* checkNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = checkNil.h; path = GovClient/checkNil.h; sourceTree = "<group>"; };
+		4AC112761C50DBB00043AC7E /* checkNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = checkNil.m; path = GovClient/checkNil.m; sourceTree = "<group>"; };
 		4AE3D3FD1C16E5C800C67574 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		4AEA84761CAB64DD00F956BB /* autoLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = autoLable.h; path = GovClient/autoLable.h; sourceTree = "<group>"; };
+		4AEA84771CAB64DD00F956BB /* autoLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = autoLable.m; path = GovClient/autoLable.m; sourceTree = "<group>"; };
 		5495D4535C66594EE3F9B2E2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8B2D9A644532B7AF1E22474B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,8 +159,6 @@
 				4AE3D3FD1C16E5C800C67574 /* Launch Screen.storyboard */,
 				36B876C51BB7862E0024990C /* PrefixHeader.pch */,
 				36FD65DE1BFC643400B87A4E /* Modle */,
-				36FD65DB1BFC54E400B87A4E /* NetGetController.h */,
-				36FD65DC1BFC54E400B87A4E /* NetGetController.m */,
 				36B876AD1BB784750024990C /* GovClient */,
 				36B876AC1BB784750024990C /* Products */,
 				DAC6285AC1E6F3A6BDDAAEDF /* Pods */,
@@ -200,8 +201,6 @@
 		36B876AE1BB784750024990C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4AC112751C50DBB00043AC7E /* checkNil.h */,
-				4AC112761C50DBB00043AC7E /* checkNil.m */,
 				36B876AF1BB784750024990C /* main.m */,
 			);
 			name = "Supporting Files";
@@ -223,8 +222,14 @@
 		36FD65DE1BFC643400B87A4E /* Modle */ = {
 			isa = PBXGroup;
 			children = (
+				36FD65DB1BFC54E400B87A4E /* NetGetController.h */,
+				36FD65DC1BFC54E400B87A4E /* NetGetController.m */,
+				4AC112751C50DBB00043AC7E /* checkNil.h */,
+				4AC112761C50DBB00043AC7E /* checkNil.m */,
 				36FD65DF1BFC648800B87A4E /* indexdata.m */,
 				36FD65E01BFC648800B87A4E /* indexdata.h */,
+				4AEA84761CAB64DD00F956BB /* autoLable.h */,
+				4AEA84771CAB64DD00F956BB /* autoLable.m */,
 			);
 			name = Modle;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 				36B876B61BB784750024990C /* ViewController.m in Sources */,
 				36B876B31BB784750024990C /* AppDelegate.m in Sources */,
 				36FD65E51BFC648800B87A4E /* ProgramPacketViewController.m in Sources */,
+				4AEA84781CAB64DD00F956BB /* autoLable.m in Sources */,
 				4AC112771C50DBB00043AC7E /* checkNil.m in Sources */,
 				36B876B01BB784750024990C /* main.m in Sources */,
 				36FD65E41BFC648800B87A4E /* indexdata.m in Sources */,

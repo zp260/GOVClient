@@ -12,6 +12,7 @@
 
 @interface ProfesnalViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
+    MBProgressHUD *hud;
     indexdata *data;
     int _page;
     NSNumber *_currentPage;

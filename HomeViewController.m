@@ -16,7 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"正在读取数据中。。";
     [self initTableList];
     _SearchBar.delegate =self;
 
@@ -59,7 +60,7 @@
         [self._TableView reloadData];
     }
     
-    
+    hud.hidden=YES;
 }
 -(void)moreDataBack:(NSDictionary *)backData
 {

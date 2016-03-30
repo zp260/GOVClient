@@ -10,10 +10,12 @@
 #import "indexdata.h"
 #import "NetGetController.h"
 #import "checkNil.h"
+
 @interface ProgramContent : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     indexdata *data;
     NetGetController *get;
+
     NSDictionary *_PackageDic;
     NSArray *_ZhuanjiaList;
     checkNil *NstringCheckNil;

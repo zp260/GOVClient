@@ -50,7 +50,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FCD-8H-xoa" id="rZx-BM-2I3">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MT9-Us-g2K">

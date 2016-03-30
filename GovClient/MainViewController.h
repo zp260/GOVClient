@@ -11,6 +11,7 @@
 @interface MainViewController : UIViewController<UITextFieldDelegate>
 {
     CGSize kbSize;
+    MBProgressHUD *hud;
 }
 @property (strong, nonatomic) IBOutlet UIImageView *_TopWeatherImgView;
 @property (strong, nonatomic) IBOutlet UITextField *_UserTextFiled;

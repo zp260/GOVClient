@@ -14,33 +14,89 @@
 
 @implementation ProfesonContentViewController
 
+@synthesize _ProScrool;
+@synthesize _ProInfo;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     NstringCheckNil = [[checkNil alloc]init]; //初始化空字符窜处理
     data = [[indexdata alloc]init];
     [data readNSUserDefaults];
     
-    
 
     
     // Do any additional setup after loading the view from its nib.
     _s_height =kDeviceHeight - KNavgationBarHeight+self._segment.height-KTabarHeight;
     self._BaseView.frame = CGRectMake(0, KNavgationBarHeight+self._segment.height, kDeviceWidth, _s_height);
+    [self initProInfoViews];
+    
     self._ProAbout.frame =self._BaseView.frame;
-    self._ProInfo.frame =self._BaseView.frame;
+    self._ProInfo.frame = self._BaseView.frame;
+    
     
     [self.view addSubview:self._BaseView];
     [self.view addSubview:self._ProAbout];
     [self.view addSubview:self._ProInfo];
-
+    
+    
     [self configBaseInfo];
     [self makeConfigMenu];
     [self makeHeaderView];
-
+    
     _InfoListPara = [[NSMutableDictionary alloc]initWithObjectsAndKeys:data.DefaultEid,@"uid",data.DefaultCst,@"cst",_eid,@"eid", nil];
     NSString *urlstr = [NSString stringWithFormat:@"%@%@",Url_RootAdress,Url_InfoList];
     [self getOLData:urlstr parameter:_InfoListPara];
     
+
+    
+}
+-(void)viewDidLayoutSubviews
+{
+    
+    //获取数据重新排版
+    float new_Y = 0;
+    float new_Height = 0;
+    for (id obj in self._ProInfo.subviews)
+    {
+        
+        if([obj isKindOfClass:[UILabel class]] )
+        {
+            UILabel *thisViewLable = (UILabel*)obj;
+            NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12]};
+            
+            CGRect rect = [thisViewLable.text boundingRectWithSize:CGSizeMake(thisViewLable.width, MAXFLOAT)
+                           
+                                                           options:NSStringDrawingUsesLineFragmentOrigin
+                           
+                                                        attributes:attributes
+                           
+                                                           context:nil];
+            
+            if (new_Y == 0)
+            {
+                new_Y = _mainJl.top;
+            }
+            [thisViewLable setFrame:CGRectMake(thisViewLable.left, new_Y, thisViewLable.width, rect.size.height)];
+            new_Y = thisViewLable.bottom+16;
+        }
+        
+    }
+//    new_Height = new_Y;
+//    self._ProInfo.frame = CGRectMake(self._ProInfo.left, self._ProInfo.top, self._ProInfo.width, new_Height);
+//    NSLog(@"proinfo - ----->%@",NSStringFromCGRect(self._ProInfo.frame));
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+
+
+
+}
+-(void)initProInfoViews
+{
+
     
     
 }
@@ -126,6 +182,8 @@
 {
     if (self._BaseInfo)
     {
+        NSLog(@"专家信息----->%@",self._BaseInfo);
+        
         _eid =[self._BaseInfo valueForKey:@"eid"];
         
         _name.text = [NSString stringWithFormat:@"%@%@",_name.text,[self._BaseInfo valueForKey:@"name"]];
@@ -143,27 +201,11 @@
         _phone.text = [NSString stringWithFormat:@"%@%@",_phone.text,[self._BaseInfo valueForKey:@"sjhm"]];
         
         
-        _TowYearPR.text = [NSString stringWithFormat:@"%@%@",_TowYearPR.text,[self convertNull:[self._BaseInfo valueForKey:@"jlnccjpbdzbxm"]]];
-        _KYResoult.text = [NSString stringWithFormat:@"%@%@",_KYResoult.text,[self convertNull:[self._BaseInfo valueForKey:@"zykycghgzyj"]]];
-        _mainJl.text = [NSString stringWithFormat:@"%@%@",_mainJl.text,[self convertNull:[self._BaseInfo valueForKey:@"zygzjl"]]];
-        NSLog(@"frame-->%@",NSStringFromCGRect(_mainJl.frame));
-
-        
-        NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:14]};
-        
-        CGRect rect = [_mainJl.text boundingRectWithSize:CGSizeMake(self.view.width, MAXFLOAT)
-                       
-                                                  options:NSStringDrawingUsesLineFragmentOrigin
-                       
-                                               attributes:attributes
-                       
-                                                  context:nil];
-        NSLog(@"%@",NSStringFromCGRect(rect));
-        _mainJl.frame =rect;
-        [_mainJl setFrame:rect];
-        
-        _JoinWhere.text = [NSString stringWithFormat:@"%@%@",_JoinWhere.text,[self convertNull:[self._BaseInfo valueForKey:@"jlnccjpbdzbxm"]]];
-        _JoinWhosGuide.text = [NSString stringWithFormat:@"%@%@",_JoinWhosGuide.text,[self convertNull:[self._BaseInfo valueForKey:@"drhjqyjszdymygw"]]];
+        _TowYearPR.text = [NSString stringWithFormat:@"%@\n%@",_TowYearPR.text,[self convertNull:[self._BaseInfo valueForKey:@"jlnccjpbdzbxm"]]];
+        _KYResoult.text = [NSString stringWithFormat:@"%@\n%@",_KYResoult.text,[self convertNull:[self._BaseInfo valueForKey:@"zykycghgzyj"]]];
+        _mainJl.text = [NSString stringWithFormat:@"%@\n%@",_mainJl.text,[self convertNull:[self._BaseInfo valueForKey:@"zygzjl"]]];
+        _JoinWhere.text = [NSString stringWithFormat:@"%@\n%@",_JoinWhere.text,[self convertNull:[self._BaseInfo valueForKey:@"jlnccjpbdzbxm"]]];
+        _JoinWhosGuide.text = [NSString stringWithFormat:@"%@\n%@",_JoinWhosGuide.text,[self convertNull:[self._BaseInfo valueForKey:@"drhjqyjszdymygw"]]];
         [self covertNilLables];
     }
 }
@@ -194,7 +236,7 @@
     }
     else if ([object rangeOfString:@"<null>"].location !=NSNotFound)
     {
-        return [object stringByReplacingOccurrencesOfString:@"<null>" withString:@"无"];
+        return [object stringByReplacingOccurrencesOfString:@"<null>" withString:@" "];
     }
     return object;
     

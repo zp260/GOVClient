@@ -23,6 +23,7 @@
     
     IBOutlet UITableViewCell *_loadMoreCell;
     IBOutlet UISearchBar *_SearchBar;
+    MBProgressHUD *hud;
 }
 @property (strong,nonatomic) NSArray *_MenuArray;
 @property (strong, nonatomic) IBOutlet UITableView *_TableView;

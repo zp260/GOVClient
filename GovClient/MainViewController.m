@@ -16,13 +16,15 @@
 @synthesize userDefaults;
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    
     // Do any additional setup after loading the view from its nib.
     userDefaults = [NSUserDefaults standardUserDefaults];
     [self readNSUserDefaults];
-    if (_DefaultEid && _DefaultPass && _DefaultUser && _DefaultCst)
-    {
-        [self DoLogin];
-    }
+//    if (_DefaultEid && _DefaultPass && _DefaultUser && _DefaultCst)
+//    {
+//        [self DoLogin];
+//    }
 
 }
 
@@ -31,8 +33,10 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)_LoginClick:(id)sender {
+    
     if (self._PassTextFiled.text.length>0 && self._UserTextFiled.text.length>0)
     {
+        
         [self checkUserPass];
     }
     
@@ -45,6 +49,8 @@
 
 -(void)checkUserPass
 {
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"登录中。。";
     NSDictionary *_para = [[NSDictionary alloc]initWithObjectsAndKeys:self._UserTextFiled.text,@"loginname",self._PassTextFiled.text,@"password", nil];
     NSString *_url = [[NSString alloc]initWithFormat:@"%@%@",Url_RootAdress,loginPath];
     NetGetController *_netGet = [[NetGetController alloc]init];
@@ -61,6 +67,7 @@
             [userDefaults setObject:[backdata objectForKey:@"cst"] forKey:@"cst"];
             [userDefaults setObject:[backdata objectForKey:@"uid"] forKey:@"uid"];
             [self saveNSUserDefaults];
+            hud.hidden=YES;
             [self DoLogin];
         }
     }
