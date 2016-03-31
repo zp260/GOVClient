@@ -39,16 +39,22 @@
 }
 -(void)viewWillLayoutSubviews
 {
+    [self resetLable:self._SgView2.subviews top_y:_SidName.top];
+    [self resetLable:self._SgView3.subviews top_y:_PidStartTime.top];
+}
+
+-(void)resetLable:(NSArray*)subviews top_y:(float)TOP_Y{
     //获取数据重新排版
     float new_Y = 0;
-    for (id obj in self._SgView2.subviews)
+    for (id obj in subviews)
     {
         
         if([obj isKindOfClass:[UILabel class]] )
         {
             UILabel *thisViewLable = (UILabel*)obj;
-            NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12]};
+            NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:15]};
             
+            NSLog(@"%@",thisViewLable.text);
             CGRect rect = [thisViewLable.text boundingRectWithSize:CGSizeMake(thisViewLable.width, MAXFLOAT)
                            
                                                            options:NSStringDrawingUsesLineFragmentOrigin
@@ -59,15 +65,15 @@
             
             if (new_Y == 0)
             {
-                new_Y = _SidName.top;
+                new_Y = TOP_Y;
             }
             [thisViewLable setFrame:CGRectMake(thisViewLable.left, new_Y, thisViewLable.width, rect.size.height)];
             new_Y = thisViewLable.bottom+16;
         }
         
     }
-}
 
+}
 #pragma mark - 标包数据获取以及处理
 -(void)getData
 {

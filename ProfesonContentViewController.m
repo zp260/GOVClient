@@ -55,7 +55,6 @@
     
     //获取数据重新排版
     float new_Y = 0;
-    float new_Height = 0;
     for (id obj in self._ProInfo.subviews)
     {
         
@@ -77,7 +76,7 @@
                 new_Y = _mainJl.top;
             }
             [thisViewLable setFrame:CGRectMake(thisViewLable.left, new_Y, thisViewLable.width, rect.size.height)];
-            new_Y = thisViewLable.bottom+16;
+            new_Y = thisViewLable.bottom+10;
         }
         
     }

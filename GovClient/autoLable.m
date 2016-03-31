@@ -17,7 +17,7 @@
     // Drawing code
 }
 */
--(void)AutoResetLables:(UIView *)views top_Y:(float)top_Y
+-(void)AutoResetLables:(NSArray *)views top_Y:(float)top_Y
 {
     //获取数据重新排版
     float new_Y = 0;

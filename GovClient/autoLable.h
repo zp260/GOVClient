@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface autoLable : UILabel
--(void)AutoResetLables:(UIView *)views top_Y:(float)top_Y;
+-(void)AutoResetLables:(NSArray *)views top_Y:(float)top_Y;
 @end
